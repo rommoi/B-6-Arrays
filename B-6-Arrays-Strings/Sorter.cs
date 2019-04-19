@@ -26,6 +26,10 @@ namespace Base.Lesson_6
 
         public int[] SortIntArray(int[] array)
         {
+            if(_sorter == null)
+            {
+                return new int[0];
+            }
             return _sorter.SortArray(array);
         }
     }
