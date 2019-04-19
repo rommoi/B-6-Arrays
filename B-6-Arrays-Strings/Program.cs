@@ -15,11 +15,13 @@ namespace Base.Lesson_6
         {
 
             //Create3_3Array();
-            Pyatnashki();
+            //Pyatnashki();
             //CutString();
             //ReplacePoem();
             //ЗDMassiveMaxInRow();
             //_1DMassiveSort();
+
+            SortAlgo();
 
             Console.WriteLine("press enter...");
             Console.ReadLine();
@@ -78,11 +80,11 @@ namespace Base.Lesson_6
             string s = Console.ReadLine();
 
             Console.WriteLine($"String length is {s.Length}");
-            int length = 0;
-            for (int i = 0; i < s.Length; i++)
-            {
-                length++;
-            }
+            //int length = 0;
+            //for (int i = 0; i < s.Length; i++)
+            //{
+            //    length++;
+            //}
 
             if (s.Length > 13)
             {
@@ -198,7 +200,51 @@ namespace Base.Lesson_6
             first = second;
             second = tempVar;
         }
+        private static void SortAlgo()
+        {
+            Console.WriteLine("Input algo : bubble, insertion, heapsort, quicksort...");
 
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(100);
+            }
+            foreach (var item in arr)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine("\n");
+
+            Sorter sort = new Sorter();
+
+            string s = Console.ReadLine().ToUpper();
+            switch (s)
+            {
+                case "BUBBLE":
+                    sort.SetAlgorithm = Sorter.SortAlgorithm.Bubble;
+                    break;
+                case "INSERTION":
+                    sort.SetAlgorithm = Sorter.SortAlgorithm.Insertion;
+                    break;
+                case "HEAPSORT":sort.SetAlgorithm = Sorter.SortAlgorithm.Heapsort;
+                    break;
+                case "QUICKSORT": sort.SetAlgorithm = Sorter.SortAlgorithm.QuickSort;
+                    break;
+                default:
+                    break;
+            }
+
+            sort.SortIntArray(arr);
+
+            foreach (var item in arr)
+            {
+                Console.Write(item + " ");
+                
+            }
+            Console.WriteLine();
+
+        }
 
     }
 }
